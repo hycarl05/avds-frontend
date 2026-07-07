@@ -9,8 +9,7 @@ import { fetchWithAuth } from '../../services/http';
 import config from '../../config';
 import { jsPDF } from 'jspdf';
 import autoTable from 'jspdf-autotable';
-import DataTableRaw from 'react-data-table-component';
-const DataTable = DataTableRaw.default || DataTableRaw;
+import DataTable from 'react-data-table-component';
 import {
   RefreshCw, Flame, LayoutGrid, BarChart3, Car, Activity,
   AlertTriangle, ChevronRight, Search, Download, WifiOff,

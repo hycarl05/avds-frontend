@@ -1,0 +1,299 @@
+/* Mobile-First Responsive Enhancements for Assets Page */
+
+/* Touch-friendly interactions */
+@media (hover: none) {
+  /* Remove hover effects on touch devices */
+  .hover\:scale-102:hover {
+    transform: scale(1.02);
+  }
+  
+  /* Enhance active states for touch */
+  .active\:scale-98:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Smooth scrolling for mobile */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better scrollbar styling for mobile-like experience */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(156, 163, 175, 0.5);
+  border-radius: 2px;
+}
+
+/* Mobile-optimized animations */
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.3s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+/* Mobile-specific utility classes */
+.mobile-card-shadow {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.mobile-card-shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Touch target size compliance */
+.touch-target {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* Prevent text selection on interactive elements */
+.no-select {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* iOS-style momentum scrolling */
+.momentum-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Mobile-optimized focus states */
+.mobile-focus:focus {
+  outline: 2px solid #3B82F6;
+  outline-offset: 2px;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-up,
+  .animate-slide-down,
+  .animate-slide-left,
+  .animate-slide-right,
+  .animate-bounce-gentle,
+  .animate-pulse-slow,
+  .animate-slide-in-left,
+  .animate-slide-in-right {
+    animation: none;
+  }
+  
+  .transition-all,
+  .transition-colors,
+  .transition-transform {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .bg-gray-800\/60 {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  
+  .border-gray-700\/50 {
+    border-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .text-gray-400 {
+    color: #d1d5db;
+  }
+}
+
+/* Dark mode refinements */
+@media (prefers-color-scheme: dark) {
+  /* Ensure good contrast in dark mode */
+  .bg-gray-900 {
+    background-color: #000000;
+  }
+  
+  .bg-gray-800 {
+    background-color: #111827;
+  }
+}
+
+/* Mobile viewport units fix for iOS */
+.min-h-screen-mobile {
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+/* Swipe gesture indicators */
+.swipe-indicator {
+  position: relative;
+}
+
+.swipe-indicator::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 20px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(156, 163, 175, 0.5), transparent);
+  transform: translateY(-50%);
+}
+
+/* Mobile-optimized loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, #1f2937 25%, #374151 50%, #1f2937 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Mobile-friendly modal backdrop */
+.mobile-modal-backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Responsive text sizing */
+@media (max-width: 640px) {
+  .text-responsive-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  .text-responsive-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  
+  .text-responsive-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
+/* Mobile-optimized spacing */
+@media (max-width: 640px) {
+  .mobile-p-2 {
+    padding: 0.5rem;
+  }
+  
+  .mobile-p-3 {
+    padding: 0.75rem;
+  }
+  
+  .mobile-p-4 {
+    padding: 1rem;
+  }
+  
+  .mobile-gap-2 {
+    gap: 0.5rem;
+  }
+  
+  .mobile-gap-3 {
+    gap: 0.75rem;
+  }
+}
+
+/* Bottom sheet animation for mobile modals */
+.bottom-sheet-enter {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.bottom-sheet-enter-active {
+  transform: translateY(0);
+  opacity: 1;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.bottom-sheet-exit {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.bottom-sheet-exit-active {
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+/* Pull-to-refresh indicator */
+.pull-to-refresh {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(59, 130, 246, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.pull-to-refresh.active {
+  top: 10px;
+  background: rgba(59, 130, 246, 0.2);
+}
+
+/* Mobile-specific button styles */
+@media (max-width: 640px) {
+  .btn-mobile {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+  
+  .btn-mobile-lg {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+    min-height: 48px;
+    touch-action: manipulation;
+  }
+}
