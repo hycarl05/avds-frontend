@@ -31,7 +31,7 @@ axios.interceptors.request.use(
                     await fetch(`${config.API_URL || ''}/sanctum/csrf-cookie`, { credentials: 'include' });
                     xsrf = getCookie('XSRF-TOKEN');
                 }
-                if (xsrf) config.headers['X-XSRF-TOKEN'] = xsrf;
+                if (xsrf) config.headers['X-XSRF-TOKEN'] = decodeURIComponent(xsrf);
             } catch (e) {
                 logger.error('Axios CSRF token error', e);
             }
@@ -152,7 +152,7 @@ export const fetchWithAuth = async (url, options = {}) => {
     if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(method) && !isApiRequest(url)) {
         try {
             const xsrfToken = await ensureCsrfToken();
-            headers['X-XSRF-TOKEN'] = xsrfToken;
+            headers['X-XSRF-TOKEN'] = decodeURIComponent(xsrfToken);
         } catch (e) {
             logger.error('CSRF token error', e);
             throw new Error('Failed to get CSRF token. Please refresh and try again.');

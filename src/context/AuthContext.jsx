@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
+import '../services/http';
 import config from '../config';
 
 const AuthContext = createContext(null);
@@ -99,11 +100,15 @@ export const AuthProvider = ({ children }) => {
         try {
             console.log('🔐 Starting login...');
             
+            // Fetch CSRF cookie first for stateful authentication
+            await axios.get(`${config.API_URL}/sanctum/csrf-cookie`, { withCredentials: true });
+
             // Attempt login - backend now returns token
             const response = await axios.post(
                 `${config.API_URL}/api/auth/login`,
                 credentials,
                 { 
+                    withCredentials: true,
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
